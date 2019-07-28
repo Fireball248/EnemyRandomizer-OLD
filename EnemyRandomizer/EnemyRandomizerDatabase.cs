@@ -1092,7 +1092,9 @@ namespace EnemyRandomizerMod
             "Radiance",
             "Pigeon",
             "Hollow Knight Boss",
-            "Zote Boss"//33 (BOSS???)
+            "Zote Boss",//33 (BOSS???),
+            "Hollow Shade",//possibly not required here
+            "Shade Sibling"
         };
 
 
@@ -1118,7 +1120,9 @@ namespace EnemyRandomizerMod
             "Mantis Traitor Lord",
             "Hollow Knight Boss",
             "Pigeon",
-            "Zote Boss"//33 (BOSS???) //TODO: find a way to check if zote is dead
+            "Zote Boss",//33 (BOSS???) //TODO: find a way to check if zote is dead
+            "Hollow Shade",//possibly not required here
+            "Shade Sibling"
         };
 
         /*
