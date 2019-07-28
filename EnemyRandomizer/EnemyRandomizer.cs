@@ -20,7 +20,7 @@ namespace EnemyRandomizerMod
         EnemyRandomizerDatabase database;
         EnemyRandomizerLogic logic;
 
-        string fullVersionName = "0.2.x (in development)";
+        string fullVersionName = "0.3.0";
         string modRootName = "RandoRoot";
 
         //public const bool kmode = true;
