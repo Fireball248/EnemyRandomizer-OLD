@@ -2,7 +2,11 @@
 A working version of Kerr1291's Enemy Randomizer mod for Hollow Knight.
 
 ## Installation
-Download the mod installer from the HK discord and use that to install this, although it may not be up-to-date.
+If you can find it, move the EnemyRandomizer.dll file into `<Path-To-Hollow Knight>\Hollow Knight\hollow_knight_Data\Managed\Mods\`.
+
+Otherwise, either:
+
+Download the mod installer from the HK discord and use that to install it, although it may not be up-to-date.
 
 OR
 
@@ -12,6 +16,15 @@ This mod requires both the modding API and ModCommon, both of which can be found
 
 ## Usage
 Click the [LOAD ENEMY RANDOMIZER] button in the top-left of the main menu to load the randomizer.
+
+By default, the randomizer will change each enemy type into another random type, and this will remain constant between rooms. This behaviour can be changed, as below.
+
+## Settings
+ - Chaos Mode - Each enemy will be fully randomized with no restrictions when you enter a new room. Enemies of the same type can be changed into different things.
+ - Room Mode - Each enemy type will be re-randomized each time you enter a new room, but it will still change every enemy of that type.
+ - Randomize Geo - Randomizes amount of geo dropped by enemies
+ - Custom Enemies - Allows custom enemies to be added to the randomizer
+ - (Cheat) No Clip - Turns on no clip - to be used in case of a bug that blocks progression by normal means, e.g. a door not opening after a boss has been killed.
 
 ## Known Bugs
 If you load a save and then return to the main menu, it will soft-lock and you will have to restart the game. 
