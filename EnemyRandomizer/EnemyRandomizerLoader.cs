@@ -81,6 +81,22 @@ namespace EnemyRandomizerMod
             //iterate over the loaded scenes
             for( int i = 0; i < UnityEngine.SceneManagement.SceneManager.sceneCount; ++i )
             {
+                if (i % 3 == 0)
+                {
+                    IEnumerator UnloadAssets()
+                    {
+                        yield return Resources.UnloadUnusedAssets();
+                    }
+                    
+                    // Avoid over-allocationg memory by forcing a GC
+                    if (GameManager.instance != null)
+                    {
+                        GameManager.instance.StartCoroutine(UnloadAssets());
+                    }
+
+                    GC.Collect();
+                }
+                
                 Scene sceneToLoad = UnityEngine.SceneManagement.SceneManager.GetSceneAt(i);
 
                 if( sceneToLoad.name == Menu.RandomizerMenu.MainMenuSceneName )
