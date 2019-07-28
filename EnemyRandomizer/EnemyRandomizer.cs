@@ -143,6 +143,19 @@ namespace EnemyRandomizerMod
             }
         }
 
+        //if godmaster enemies is enabled, then we are allowed to use bosses from godmaster such as sly or pure vessel
+        bool godmasterEnemies = false;
+        public bool GodmasterEnemies {
+            get {
+                return godmasterEnemies;
+            }
+            set {
+                if (GlobalSettings != null)
+                    GlobalSettings.GodmasterEnemies = value;
+                godmasterEnemies = value;
+            }
+        }
+
         public override void Initialize()
         {
             if(Instance != null)
@@ -157,7 +170,7 @@ namespace EnemyRandomizerMod
 
             Log("Enemy Randomizer Mod initializing!");
 
-            SetupDefaulSettings();
+            SetupDefaultSettings();
 
             UnRegisterCallbacks();
             RegisterCallbacks();
@@ -384,7 +397,7 @@ namespace EnemyRandomizerMod
             return go;
         }
 
-        void SetupDefaulSettings()
+        void SetupDefaultSettings()
         {
             string globalSettingsFilename = Application.persistentDataPath + ModHooks.PathSeperator + GetType().Name + ".GlobalSettings.json";
 
@@ -417,6 +430,7 @@ namespace EnemyRandomizerMod
                 RoomRNG = true;
                 RandomizeGeo = false;
                 CustomEnemies = false;
+                GodmasterEnemies = false;
             }
 
             OptionsMenuSeed = GameRNG.Randi();
@@ -515,6 +529,7 @@ namespace EnemyRandomizerMod
             RoomRNG = GlobalSettings.RNGRoomMode;
             RandomizeGeo = GlobalSettings.RandomizeGeo;
             CustomEnemies = GlobalSettings.CustomEnemies;
+            GodmasterEnemies = GlobalSettings.GodmasterEnemies;
              
             //if( kmode )
             //{

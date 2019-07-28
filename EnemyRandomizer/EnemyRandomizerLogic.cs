@@ -1594,13 +1594,16 @@ namespace EnemyRandomizerMod
                 int tempFlags = GetTypeFlags(tempName);
                 bool isValid = false;
 
+                if (EnemyRandomizerDatabase.godmasterEnemyTypeNames.Contains(tempName))
+                {
+                    isValid = false;
+                }
 
                 if( HasSameType( enemyFlags, tempFlags ) )
                 {
                     if( HasSameSize( enemyFlags, tempFlags ) )
                     {
                         isValid = true;
-                        Dev.Log( "Replacement is VALID." );
                     }
                 }
                 
@@ -1651,10 +1654,12 @@ namespace EnemyRandomizerMod
                     }
                 }
 
-                if( isValid )
+                if (isValid) {
+                    Dev.Log ("Replacement is VALID.");
                     randomReplacement = temp;
+                }
                 else
-                    Dev.Log( "Replacement is INVALID." );
+                    Dev.Log ("Replacement is INVALID.");
 
                 emergencyAbortCounter++;
 

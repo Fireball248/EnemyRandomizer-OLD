@@ -18,9 +18,10 @@ namespace EnemyRandomizerMod
         public const string RandomizeGeo = "RandomizeGeo";
         public const string CheatNoclip = "(Cheat) No Clip";
         public const string CustomEnemies = "CustomEnemies";
+        public const string GodmasterEnemies = "GodmasterEnemies";
 
         //change when the global settings are updated to force a recreation of the global settings
-        public const string GlobalSettingsVersion = "0.0.8";
+        public const string GlobalSettingsVersion = "0.0.9";
     }
 
     //Global (non-player specific) settings
@@ -77,6 +78,14 @@ namespace EnemyRandomizerMod
             set {
                 StringValues[ EnemyRandomizerSettingsVars.CustomEnemies ] = "Custom Enemies";
                 SetBool( value );
+            }
+        }
+
+        public bool GodmasterEnemies {
+            get => GetBool (false);
+            set {
+                StringValues[EnemyRandomizerSettingsVars.GodmasterEnemies] = "Godmaster Enemies";
+                SetBool (value);
             }
         }
     }

@@ -624,7 +624,8 @@ namespace EnemyRandomizerMod.Menu
                                             EnemyRandomizer.Instance.RandomizeGeo = false;
                                         if( optionName == EnemyRandomizerSettingsVars.CustomEnemies )
                                             EnemyRandomizer.Instance.CustomEnemies = false;
-
+                                        if (optionName == EnemyRandomizerSettingsVars.GodmasterEnemies)
+                                            EnemyRandomizer.Instance.GodmasterEnemies = false;
 
                                     }
                                     else
@@ -642,6 +643,8 @@ namespace EnemyRandomizerMod.Menu
                                             EnemyRandomizer.Instance.RandomizeGeo = true;
                                         if( optionName == EnemyRandomizerSettingsVars.CustomEnemies )
                                             EnemyRandomizer.Instance.CustomEnemies = true;
+                                        if (optionName == EnemyRandomizerSettingsVars.GodmasterEnemies)
+                                            EnemyRandomizer.Instance.GodmasterEnemies = true;
                                     }
                                 }
 
