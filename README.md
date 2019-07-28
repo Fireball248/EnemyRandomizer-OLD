@@ -24,6 +24,7 @@ By default, the randomizer will change each enemy type into another random type,
  - Room Mode - Each enemy type will be re-randomized each time you enter a new room, but it will still change every enemy of that type.
  - Randomize Geo - Randomizes amount of geo dropped by enemies
  - Custom Enemies - Allows custom enemies to be added to the randomizer
+ - Godmaster Enemies - Allows enemies from the Godmaster expansion to be included in the randomizer. This includes Absolute Radiance, Pure Vessel, Winged Nosk, Mato, Oro, Sheo, Sly and Eternal Ordeal enemies.
  - (Cheat) No Clip - Turns on no clip - to be used in case of a bug that blocks progression by normal means, e.g. a door not opening after a boss has been killed.
 
 ## Known Bugs
