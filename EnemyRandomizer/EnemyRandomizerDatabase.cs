@@ -772,7 +772,8 @@ namespace EnemyRandomizerMod
             "Sly Boss",            
             "Zote Crew Tall",
             "Zote Crew Normal",
-            "Zote Crew Fat"
+            "Zote Crew Fat",
+            "Colosseum Grass Hopper"
         };
 
         public static List<string> smallEnemyTypeNames = new List<string>()
@@ -910,8 +911,7 @@ namespace EnemyRandomizerMod
             "Crawler",
             "Ordeal Zoteling",
             "Zote Crew Normal",
-            "Zote Balloon Ordeal",
-            "Sly Boss"
+            "Zote Balloon Ordeal"
         };
 
         public static List<string> mediumEnemyTypeNames = new List<string>()
@@ -980,7 +980,9 @@ namespace EnemyRandomizerMod
             "Zote Thwomp",
             "Zote Crew Tall",
             "Zote Crew Fat",
-            "Zote Fluke"
+            "Zote Fluke",
+            "Sly Boss",
+            "Colosseum Grass Hopper"
         };
 
         public static List<string> bigEnemyTypeNames = new List<string>()
@@ -1128,16 +1130,16 @@ namespace EnemyRandomizerMod
             "Pigeon",
             "Hollow Knight Boss",
             "Zote Boss",//33 (BOSS???),
-            "Hollow Shade",//possibly not required here
             "Shade Sibling",
             "HK Prime",
             "Absolute Radiance",
-            "Oro",
-            "Mato",
-            "Sheo Boss",
             "Zote Thwomp",
             "Zote Turret",
-            "Zote Fluke"
+            "Zote Fluke",
+            "Spider Flyer", // weaver - turns invisible
+            "Lost Kin",
+            "Nightmare Grimm Boss", // totally breaks it
+            "Grimm Boss" // as above
         };
 
 
@@ -1164,16 +1166,18 @@ namespace EnemyRandomizerMod
             "Hollow Knight Boss",
             "Pigeon",
             "Zote Boss",//33 (BOSS???) //TODO: find a way to check if zote is dead
-            "Hollow Shade",//possibly not required here
             "Shade Sibling",
             "HK Prime",
             "Absolute Radiance",
-            "Oro",
-            "Mato",
-            "Sheo Boss",
             "Zote Thwomp",
             "Zote Turret",
-            "Zote Fluke"
+            "Zote Fluke",
+            "Spider Flyer", // weaver - turns invisible
+            "Mage",
+            "Electric Mage",
+            "Lost Kin",
+            "Nightmare Grimm Boss", // totally breaks it
+            "Grimm Boss" // as above
         };
 
         /*
@@ -1369,6 +1373,15 @@ namespace EnemyRandomizerMod
             "Zote Balloon Ordeal",
             "Zote Crew Tall",
             "Zote Thwomp"
+        };
+
+        // this will make the given enemies in the given scene un-changeable. Use to avoid event-breaking changes such as the Shrumal Ogres in Fungal Wastes.
+        public static Dictionary<int, List<string>> exemptEnemyTypeNamesInScene = new Dictionary<int, List<string>>
+        {
+            { -1, new List<string> { "Zombie Fungus A" } }, // shrumal ogres
+            { 32, new List<string> { "Zote Boss" } }, // colosseum 1 - zote
+            { 33, new List<string> { "Grub Mimic" } }, // colosseum 2 - grub mimic
+            { 34, new List<string> { "Baby Centipede", "Mantis Traitor Lord" } }, // colosseum 3 - garpede? and traitor lord??? (I don't think we need these, but Kerr put them in so I'm not removing them)
         };
     }
 }

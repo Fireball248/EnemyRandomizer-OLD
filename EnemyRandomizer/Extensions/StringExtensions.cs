@@ -254,6 +254,8 @@ namespace EnemyRandomizerMod
 
         public static bool IsSkipRandomizingString( this string str )
         {
+            Dev.Log (str);
+
             if( string.IsNullOrEmpty( str ) )
                 return true;
 
@@ -283,6 +285,21 @@ namespace EnemyRandomizerMod
                 return true;
 
             if( str.Contains( "Hornet Boss 1" ) )
+                return true;
+
+            if (str.Contains ("Hollow Knight Boss"))
+                return true;
+
+            if (str.Contains ("Radiance"))
+                return true;
+
+            if (str.Contains ("Fluke Mother"))
+                return true;
+
+            if (str.Contains ("Royal Gaurd")) // kingsmould
+                return true;
+
+            if (str.Contains ("White Palace Fly")) // wingmould
                 return true;
 
             return false;

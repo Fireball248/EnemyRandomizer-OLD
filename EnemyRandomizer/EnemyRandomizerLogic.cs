@@ -437,29 +437,19 @@ namespace EnemyRandomizerMod
             //this failsafe is needed here in the case where we have exceptional things that should NOT be randomized
             if( enemy.name.IsSkipRandomizingString() )
             {
-                //Dev.Log( "Exceptional case found in SkipRandomizeEnemy() -- Skipping randomization for: " + enemy.name );
+                Dev.Log( "Exceptional case found in SkipRandomizeEnemy() -- Skipping randomization for: " + enemy.name );
                 return;
             }
 
-            //TODO: refactor this into a function
-            for( int i = 0; i < UnityEngine.SceneManagement.SceneManager.sceneCount; ++i )
-            {
-                Scene loadedScene = UnityEngine.SceneManagement.SceneManager.GetSceneAt(i);
+            int sceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene ().buildIndex;
 
-                if( !loadedScene.IsValid() )
-                    continue;
-
-                string sceneName = loadedScene.name;
-
-                if( sceneName.Contains( "Colosseum" ) )
-                {
-                    //don't randomize these in the colosseum, will cause a softlock
-                    if( enemy.name.Contains( "Zote Boss" ) )
+            // check for specific scene-based exemptions such as shrumal ogres and the colosseum
+            if (EnemyRandomizerDatabase.exemptEnemyTypeNamesInScene.ContainsKey (sceneIndex)) {
+                foreach (string name in EnemyRandomizerDatabase.exemptEnemyTypeNamesInScene[sceneIndex]) {
+                    if (enemy.name.Contains (name)) {
+                        Dev.Log ("Enemy " + enemy.name + " cannot be randomized in this scene.");
                         return;
-                    if( enemy.name.Contains( "Baby Centipede" ) )
-                        return;
-                    if( enemy.name.Contains( "Mantis Traitor Lord" ) )
-                        return;
+                    }
                 }
             }
 
@@ -475,8 +465,8 @@ namespace EnemyRandomizerMod
 
             int randomReplacementIndex = 0;
 
-            GameObject replacement = GetRandomEnemyReplacement(enemy, ref randomReplacementIndex);
-            ReplaceEnemy( enemy, replacement, randomReplacementIndex );
+            GameObject replacement = GetRandomEnemyReplacement (enemy, ref randomReplacementIndex);
+            ReplaceEnemy (enemy, replacement, randomReplacementIndex);
         }
 
         void ReplaceEnemy( GameObject oldEnemy, GameObject replacementPrefab, int prefabIndex )
@@ -1527,9 +1517,6 @@ namespace EnemyRandomizerMod
             string trimmedName = enemyName.TrimGameObjectName();
             int enemyFlags = GetTypeFlags(trimmedName);
 
-
-
-
             //check to see if this enemy is allowed in this scene and do some special logic depending...
             //TODO: refactor this into a function
             if( GameManager.instance.GetCurrentMapZone() == "COLOSSEUM" )
@@ -1544,7 +1531,6 @@ namespace EnemyRandomizerMod
                     enemyFlags |= FLAGS.FLYING;
                 }
             }
-
 
             //if not set, enemy replacements will be completely random
             if( !EnemyRandomizer.Instance.ChaosRNG )
@@ -1561,7 +1547,6 @@ namespace EnemyRandomizerMod
                 {
                     int sceneHashValue = currentScene.GetHashCode();
                     replacementRNG.Seed = stringHashValue + EnemyRandomizer.Instance.GameSeed + sceneHashValue;
-
                 }
 
                 Dev.Log( "Settings seed to " + replacementRNG.Seed );
@@ -1594,11 +1579,6 @@ namespace EnemyRandomizerMod
                 int tempFlags = GetTypeFlags(tempName);
                 bool isValid = false;
 
-                if (EnemyRandomizerDatabase.godmasterEnemyTypeNames.Contains(tempName))
-                {
-                    isValid = false;
-                }
-
                 if( HasSameType( enemyFlags, tempFlags ) )
                 {
                     if( HasSameSize( enemyFlags, tempFlags ) )
@@ -1606,8 +1586,12 @@ namespace EnemyRandomizerMod
                         isValid = true;
                     }
                 }
-                
-                if( EnemyRandomizerDatabase.USE_TEST_SCENES )
+
+                if (EnemyRandomizerDatabase.godmasterEnemyTypeNames.Contains (tempName)) {
+                    isValid = false;
+                }
+
+                if ( EnemyRandomizerDatabase.USE_TEST_SCENES )
                     isValid = true;
 
                 //this one never explodes...
@@ -1654,7 +1638,8 @@ namespace EnemyRandomizerMod
                     }
                 }
 
-                if (isValid) {
+                if (isValid) 
+                {
                     Dev.Log ("Replacement is VALID.");
                     randomReplacement = temp;
                 }
