@@ -24,11 +24,13 @@ By default, the randomizer will change each enemy type into another random type,
  - Room Mode - Each enemy type will be re-randomized each time you enter a new room, but it will still change every enemy of that type.
  - Randomize Geo - Randomizes amount of geo dropped by enemies
  - Custom Enemies - Allows custom enemies to be added to the randomizer
+ - Godmaster Enemies - Allows enemies from the Godmaster expansion to be included in the randomizer. This includes Absolute Radiance, Pure Vessel, Winged Nosk, Mato, Oro, Sheo, Sly and Eternal Ordeal enemies.
  - (Cheat) No Clip - Turns on no clip - to be used in case of a bug that blocks progression by normal means, e.g. a door not opening after a boss has been killed.
 
 ## Known Bugs
-If you load a save and then return to the main menu, it will soft-lock and you will have to restart the game. 
-There is currently no way around this, so just try to avoid doing so.
+When the randomizer is loading, DO NOT minimise, alt-tab away from or otherwise drop the focus on Hollow Knight. This will cause the loader to get stuck and the game will probably crash. After it has finished, feel free to switch to another window.
+
+Certain bosses will not spawn if they have been killed elsewhere, such as Flukemarm, but their item drops will still function as normal and be found in the empty boss arena.
 
 If you have any other problems, feel free to ping me (@Fireball248) on the HK discord.
 
